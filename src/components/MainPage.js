@@ -6,6 +6,7 @@ import ApplicationViews from "./ApplicationViews"
 const MainPage = () => {
     return (
         <React.Fragment>
+            <h1>Dad Moves</h1>
             <Route render={props => (
                 <NavBar {...props} />
             )} />

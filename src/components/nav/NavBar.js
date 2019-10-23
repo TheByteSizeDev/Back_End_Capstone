@@ -1,25 +1,41 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "semantic-ui-css/semantic.min.css"
-import { Menu, Dropdown } from "semantic-ui-react"
-// import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
-
-//SN- Simple navigation bar, please add your routes as you create new pages.
+import { Menu } from "semantic-ui-react"
+import useSimpleAuth from "../../Auth/useSimpleAuth"
 
 const NavBar = props => {
-    // const { isAuthenticated, logout } = useSimpleAuth()
+    const { isAuthenticated, logout } = useSimpleAuth()
    
     return (
         <Menu size="large">
-            <Menu.Item as={Link} to="/">
+            <Menu.Item name="Home" as={Link} to="/" header>
+                DM
             </Menu.Item>
-            <Menu.Item as={Link} to="/" header>
+        
+            <Menu.Item name="Add Move" as={Link} to="/" position="right">
+                Add Move
             </Menu.Item>
-            <Menu.Item as={Link} to="/" position="right">
-            </Menu.Item>
-            <Menu.Item as={Link} to="/">
-                Log Out
-            </Menu.Item>
+
+            {isAuthenticated() ? (
+                <Menu.Item
+                    className="nav-link fakeLink"
+                    onClick={() => {
+                        logout()
+                        props.history.push({
+                            pathname: "/"
+                        })
+                    }}
+                >
+                    Logout
+                </Menu.Item>
+            ) : (
+                <>
+                    <Menu.Item as={Link} to="/login">
+                        Login
+                    </Menu.Item>
+                </>
+            )}
         </Menu>
     )
 }
