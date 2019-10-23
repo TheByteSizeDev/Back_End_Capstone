@@ -1,5 +1,7 @@
 import React from "react";
 import { withRouter, Route, Redirect } from "react-router-dom";
+import Login from "./Auth/Login"
+import Register from "./Auth/Register"
 
 
 const ApplicationViews = () => {
@@ -7,14 +9,21 @@ const ApplicationViews = () => {
 
   return (
     <React.Fragment>
-        <h2>Hello!</h2>
-      {/* <Route
+      <Route
         exact
-        path="/"
+        path="/login"
         render={props => {
-          return <ProductList products={products} {...props} />;
+          return <Login {...props} />;
         }}
-      /> */}
+      />
+
+      <Route
+        exact
+        path="/register"
+        render={props => {
+          return <Register {...props} />;
+        }}
+      />
     </React.Fragment>
   );
 };
