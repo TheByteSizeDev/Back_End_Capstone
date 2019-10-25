@@ -13,7 +13,7 @@ const NavBar = props => {
                 DM
             </Menu.Item>
         
-            <Menu.Item name="Add Move" as={Link} to="/" position="right">
+            <Menu.Item name="Add Move" as={Link} to="/addform" position="right">
                 Add Move
             </Menu.Item>
 
